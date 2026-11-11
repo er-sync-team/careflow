@@ -96,7 +96,7 @@ const COPY: Copy<{
     demoTitle: 'حسابات المسؤولين التجريبية',
     demoBody: 'حسابات تجريبية لعرض الهاكاثون. يدير كل حساب منشأة واحدة.',
     demoFacility: 'المنشأة التجريبية',
-    fill: 'تعبئة بيانات الدخول التجريبية',
+    fill: 'تعبئة تلقائية',
     loadFailed: 'تعذر تحميل المنشآت.',
     assignFailed: 'تعذر ربط هذه المنشأة بحسابك. يرجى المحاولة مرة أخرى.',
     choose: 'اختر المنشأة التي تديرها',
@@ -232,7 +232,7 @@ export function AuthForm({ initialFacility }: { initialFacility?: string }) {
               <KeyRound className="h-4 w-4" /> {t.demoTitle}
             </p>
             <p className="mt-1 text-xs text-sky-800">{t.demoBody}</p>
-            <div className="mt-3 flex flex-col gap-2 sm:flex-row">
+            <div className="mt-3 flex flex-col gap-2">
               <label htmlFor="demo-facility" className="sr-only">
                 {t.demoFacility}
               </label>
@@ -240,7 +240,7 @@ export function AuthForm({ initialFacility }: { initialFacility?: string }) {
                 id="demo-facility"
                 value={demoId}
                 onChange={(e) => setDemoId(e.target.value)}
-                className="h-10 flex-1 rounded-lg border border-sky-200 bg-white px-3 text-sm text-slate-800 outline-none focus:ring-2 focus:ring-sky-200"
+                className="h-10 w-full rounded-lg border border-sky-200 bg-white px-3 text-sm text-slate-800 outline-none focus:ring-2 focus:ring-sky-200"
               >
                 {facilities.map((f) => (
                   <option key={f.id} value={f.id}>
@@ -252,7 +252,7 @@ export function AuthForm({ initialFacility }: { initialFacility?: string }) {
               <button
                 type="button"
                 onClick={fillDemo}
-                className="h-10 rounded-lg bg-sky-700 px-4 text-sm font-semibold text-white transition-colors hover:bg-sky-800"
+                className="h-10 shrink-0 whitespace-nowrap rounded-lg bg-sky-700 px-4 text-sm font-semibold text-white transition-colors hover:bg-sky-800"
               >
                 {t.fill}
               </button>
