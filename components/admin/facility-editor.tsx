@@ -183,7 +183,8 @@ export function FacilityEditor({ hospital, onSaved }: { hospital: Hospital; onSa
                     value={Number.isNaN(form[key]) ? '' : form[key]}
                     onChange={(e) => setForm((f) => ({ ...f, [key]: e.target.value === '' ? NaN : Math.round(Number(e.target.value)) }))}
                     className={cn(
-                      'w-full rounded-xl border bg-white px-3 py-2.5 text-slate-900 outline-none transition focus:ring-2',
+                      'w-full rounded-xl border bg-white px-3 py-2.5 text-slate-900 outline-none transition focus:ring-2 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
+                      unit && 'pe-14',
                       errors.includes(key) ? 'border-red-400 focus:ring-red-100' : 'border-slate-300 focus:border-primary focus:ring-teal-100',
                     )}
                   />
