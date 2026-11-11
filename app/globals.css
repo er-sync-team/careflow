@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 180 20% 98.5%;
+    --foreground: 200 30% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 200 30% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 30% 10%;
+    --primary: 174 78% 27%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 199 60% 95%;
+    --secondary-foreground: 200 70% 22%;
+    --muted: 190 15% 95%;
+    --muted-foreground: 200 10% 38%;
+    --accent: 172 45% 93%;
+    --accent-foreground: 174 78% 20%;
+    --destructive: 0 74% 46%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 190 15% 88%;
+    --input: 190 15% 86%;
+    --ring: 174 78% 32%;
+    --chart-1: 174 78% 32%;
+    --chart-2: 199 80% 42%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 0 74% 50%;
+    --chart-5: 152 60% 40%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    line-height: 1.5;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+    line-height: 1.2;
+  }
+  html[lang='ar'] body,
+  html[lang='ar'] .font-sans,
+  html[lang='ar'] .font-display,
+  html[lang='ar'] h1,
+  html[lang='ar'] h2,
+  html[lang='ar'] h3,
+  html[lang='ar'] h4 {
+    font-family: var(--font-arabic), var(--font-sans), system-ui, sans-serif;
+    letter-spacing: 0;
+  }
+  html[lang='ar'] h1,
+  html[lang='ar'] h2,
+  html[lang='ar'] h3,
+  html[lang='ar'] h4 {
+    line-height: 1.35;
+  }
+}
+
+@layer utilities {
+  .bg-grid {
+    background-image: linear-gradient(to right, hsl(var(--border) / 0.6) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.6) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.45s ease-out both;
+}
+
+.leaflet-container {
+  font-family: inherit;
+  z-index: 0;
+}
+
+.cf-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 12px rgba(15, 40, 50, 0.3);
+  transition: transform 0.2s ease;
+}
+.cf-marker.is-active {
+  transform: scale(1.25);
+}
