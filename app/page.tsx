@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { SiteFooter, SiteHeader } from '@/components/site-chrome';
 import { HeroPreview } from '@/components/landing/hero-preview';
+import { VisionSection } from '@/components/landing/vision-section';
 import { WEIGHT_PROFILES, type MatchWeights } from '@/lib/matching';
 import { factorLabel } from '@/lib/i18n/terms';
 import { getLang } from '@/lib/i18n/server';
@@ -403,6 +404,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <VisionSection />
       </main>
       <SiteFooter />
     </div>

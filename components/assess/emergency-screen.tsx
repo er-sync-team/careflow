@@ -4,6 +4,7 @@ import { HeartHandshake, Phone, RotateCcw, Siren } from 'lucide-react';
 import type { Copy } from '@/lib/i18n/config';
 import { phrase } from '@/lib/i18n/terms';
 import { useLang } from '@/components/i18n-provider';
+import { ShareLocation } from './share-location';
 
 const COPY: Copy<{
   eyebrow: string;
@@ -76,6 +77,9 @@ export function EmergencyScreen({ flags, onRestart }: { flags: string[]; onResta
         >
           <Phone className="h-6 w-6" /> {t.call}
         </a>
+      </div>
+      <div className="px-6 pt-8 sm:px-10">
+        <ShareLocation />
       </div>
       <div className="grid gap-8 px-6 py-8 sm:px-10 md:grid-cols-2">
         <div>

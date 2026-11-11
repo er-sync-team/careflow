@@ -14,11 +14,13 @@ update their operational data.
 
 | What | Link |
 | --- | --- |
-| Live site | `LIVE_URL` |
-| Scenario A - emergency warning | `LIVE_URL/assess?demo=emergency` |
-| Scenario B - facility matching | `LIVE_URL/assess?demo=matching` |
-| Demo Mode (live A/B/C re-ranking) | `LIVE_URL/demo` |
-| Hospital dashboard | `LIVE_URL/admin` |
+| Live site | `https://careflow-er-sync.netlify.app` |
+| Scenario A - emergency warning | `https://careflow-er-sync.netlify.app/assess?demo=emergency` |
+| Scenario B - facility matching | `https://careflow-er-sync.netlify.app/assess?demo=matching` |
+| Demo Mode (live A/B/C re-ranking) | `https://careflow-er-sync.netlify.app/demo` |
+| Hospital dashboard | `https://careflow-er-sync.netlify.app/admin` |
+| Impact simulation (100 synthetic patients) | `https://careflow-er-sync.netlify.app/demo#impact` |
+| How we tested | `https://careflow-er-sync.netlify.app/testing` |
 
 **Hospital dashboard logins** (synthetic accounts): `admin.h01@careflow-demo.test` ... `admin.h08@careflow-demo.test`,
 password `CareFlowDemo2026!`. Hospital B (Safa) is `admin.h06@careflow-demo.test`.
@@ -45,6 +47,7 @@ The interface is available in **English and Arabic** (language switch in the hea
 | `/assess?demo=emergency` / `?demo=matching` | Assessment with Scenario A / B suggested answers |
 | `/demo` | Demo Mode hub: scenarios, live Hospital A/B/C re-ranking, demo credentials |
 | `/admin` | Administrator sign in / sign up, facility dashboard, case details, facility settings |
+| `/testing` | How we tested: what, how, results, fixed issues and what is not tested yet |
 
 ## Setup
 
@@ -164,6 +167,11 @@ facility, protected columns, anonymous), case read isolation, forged case status
 - Emergency rules for chest pain, stroke signs, breathing difficulty, loss of consciousness, seizures, heavy bleeding and poisoning/overdose
 - "Time saved" comparison: minutes to care at the recommended facility vs the nearest suitable one
 - One-click **Reset demo data** for each facility
+- **Impact simulation** on `/demo`: 100 synthetic patients through the real algorithm vs going to the nearest suitable facility
+- **How we tested** page (`/testing`): methods, results, issues found and fixed, and what is not tested yet
+- **Share my location** on the emergency screen: Google Maps link via WhatsApp or SMS
+- **Voice input** for symptoms in Arabic or English (browsers with speech recognition, e.g. Chrome and Edge)
+- **Vision and roadmap** section with a QR code on the landing page
 - Deterministic four-level urgency and three pathways
 - Eligibility-first weighted matching with explanations and excluded-facility reasons
 - Comparison cards, interactive map, directions link

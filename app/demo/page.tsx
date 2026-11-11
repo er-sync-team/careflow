@@ -3,6 +3,7 @@ import { ArrowRight, Building2, HeartPulse, MousePointerClick, RefreshCw, Stetho
 import { SiteFooter, SiteHeader } from '@/components/site-chrome';
 import { LiveRankingDemo } from '@/components/demo/live-ranking-demo';
 import { DemoCredentials } from '@/components/demo/demo-credentials';
+import { ImpactSimulator } from '@/components/demo/impact-simulator';
 import { DEMO_ADMIN_PASSWORD, DEMO_SCENARIOS, demoAdminEmail, scenarioText } from '@/lib/demo-scenarios';
 import { getLang } from '@/lib/i18n/server';
 import type { Copy } from '@/lib/i18n/config';
@@ -200,6 +201,10 @@ export default function DemoPage() {
           <div className="mt-8">
             <LiveRankingDemo />
           </div>
+        </section>
+
+        <section id="impact" className="mx-auto max-w-7xl scroll-mt-24 px-4 pb-16 sm:px-6">
+          <ImpactSimulator />
         </section>
 
         <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6">

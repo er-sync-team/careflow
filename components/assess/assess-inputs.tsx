@@ -10,6 +10,7 @@ import type { Copy } from '@/lib/i18n/config';
 import { historyLabel, locationLabel, symptomLabel } from '@/lib/i18n/terms';
 import { useCopy, useLang } from '@/components/i18n-provider';
 import { Chip } from './chat-ui';
+import { VoiceInput } from './voice-input';
 
 const COPY: Copy<{
   agePlaceholder: string;
@@ -129,6 +130,7 @@ export function SymptomPicker({ onSubmit }: { onSubmit: (ids: string[], descript
         placeholder={t.describe}
         className="w-full resize-none rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-teal-100"
       />
+      <VoiceInput onText={(spoken) => setText((cur) => (cur.trim() ? `${cur.trim()} ${spoken}` : spoken).slice(0, 1000))} />
       <div className="flex justify-end">
         <button
           disabled={busy || (selected.length === 0 && !text.trim())}
