@@ -65,7 +65,7 @@ const COPY: Copy<{ start: string; stop: string; listening: string; recording: st
 
 /**
  * Microphone button that turns speech into text (Arabic or English, following the interface language).
- * Uses built-in speech recognition where available; otherwise records a short clip and transcribes it
+ * Uses built-in speech recognition where available (words appear live while speaking); otherwise records a short clip and transcribes it
  * on the server, so it also works in Safari. Add ?voice=record to the URL to force the recording mode.
  */
 export function VoiceInput({ onText }: { onText: (text: string) => void }) {
@@ -74,6 +74,7 @@ export function VoiceInput({ onText }: { onText: (text: string) => void }) {
   const [mode, setMode] = useState<Mode>(null);
   const [phase, setPhase] = useState<Phase>('idle');
   const [error, setError] = useState<string | null>(null);
+  const [interim, setInterim] = useState('');
   const recRef = useRef<Recognizer | null>(null);
   const stopRecordingRef = useRef<(() => void) | null>(null);
 
@@ -94,15 +95,24 @@ export function VoiceInput({ onText }: { onText: (text: string) => void }) {
     if (!Ctor) return;
     const rec = new Ctor();
     rec.lang = lang === 'ar' ? 'ar-SA' : 'en-US';
-    rec.interimResults = false;
+    // Interim results show the words live while the patient is speaking; final text goes into the box.
+    rec.interimResults = true;
     rec.continuous = false;
     rec.onresult = (e) => {
-      let text = '';
-      for (let i = e.resultIndex; i < e.results.length; i++) if (e.results[i].isFinal) text += e.results[i][0].transcript;
-      if (text.trim()) onText(text.trim());
+      let finalText = '';
+      let liveText = '';
+      for (let i = e.resultIndex; i < e.results.length; i++) {
+        if (e.results[i].isFinal) finalText += e.results[i][0].transcript;
+        else liveText += e.results[i][0].transcript;
+      }
+      if (finalText.trim()) onText(finalText.trim());
+      setInterim(liveText.trim());
     };
     rec.onerror = (e) => setError(e.error === 'not-allowed' || e.error === 'service-not-allowed' ? t.denied : e.error === 'aborted' ? null : t.failed);
-    rec.onend = () => setPhase('idle');
+    rec.onend = () => {
+      setPhase('idle');
+      setInterim('');
+    };
     recRef.current = rec;
     try {
       rec.start();
@@ -214,6 +224,12 @@ export function VoiceInput({ onText }: { onText: (text: string) => void }) {
         </span>
       )}
       {busy && <span className="text-sm text-slate-600">{t.transcribing}</span>}
+      {active && interim && (
+        <p aria-live="polite" className="w-full rounded-xl border border-dashed border-teal-300 bg-teal-50/60 px-4 py-2 text-sm italic text-teal-900/70">
+          {interim}
+          <span className="ms-0.5 inline-block w-1 animate-pulse not-italic">|</span>
+        </p>
+      )}
       {error && <span className="text-sm text-slate-600">{error}</span>}
     </div>
   );
