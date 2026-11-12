@@ -181,6 +181,7 @@ export function AssessmentFlow({ scenario }: { scenario?: DemoScenario }) {
   const idRef = useRef(0);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   const push = (from: ChatMessage['from'], text: string) => setMessages((m) => [...m, { id: ++idRef.current, from, text }]);
 
@@ -210,6 +211,12 @@ export function AssessmentFlow({ scenario }: { scenario?: DemoScenario }) {
     say(introRef.current, 'consent');
     return clearTimers;
   }, [say]);
+
+  // Each new question starts at the top of the answer panel; results and emergency screens start at the top of the page.
+  useEffect(() => {
+    panelRef.current?.scrollTo({ top: 0 });
+    if (step === 'result' || step === 'emergency') window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [step]);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' });
@@ -394,7 +401,7 @@ export function AssessmentFlow({ scenario }: { scenario?: DemoScenario }) {
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
-      <div className="flex h-[calc(100vh-180px)] min-h-[560px] flex-col overflow-hidden rounded-3xl border border-border bg-slate-50/60 shadow-sm">
+      <div className="flex h-[calc(100dvh-150px)] min-h-[460px] flex-col overflow-hidden rounded-3xl border border-border bg-slate-50/60 shadow-sm sm:h-[calc(100vh-180px)] sm:min-h-[560px]">
         <div className="flex items-center justify-between border-b border-border bg-white px-5 py-3">
           <div>
             <p className="font-display font-bold text-slate-900">{t.title}</p>
@@ -404,13 +411,13 @@ export function AssessmentFlow({ scenario }: { scenario?: DemoScenario }) {
             <RotateCcw className="h-3.5 w-3.5" /> {t.restart}
           </button>
         </div>
-        <div ref={scrollRef} className="flex-1 space-y-3 overflow-y-auto px-4 py-5 sm:px-6">
+        <div ref={scrollRef} className="min-h-[120px] flex-1 space-y-3 overflow-y-auto px-4 py-5 sm:px-6">
           {messages.map((m) => (
             <ChatBubble key={m.id} message={m} />
           ))}
           {typing && <TypingIndicator />}
         </div>
-        <div className="border-t border-border bg-white p-4 sm:p-5">
+        <div ref={panelRef} className="max-h-[62%] shrink-0 overflow-y-auto border-t border-border bg-white p-4 sm:p-5">
           {demoAnswer && (
             <div className="mb-3 flex flex-col gap-2 rounded-xl border border-sky-200 bg-sky-50 p-3 sm:flex-row sm:items-center">
               <p className="flex-1 text-xs text-sky-900">
