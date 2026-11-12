@@ -43,14 +43,14 @@ const COPY: Copy<{
       {
         tag: 'Then',
         title: 'Integration',
-        points: ['Entry point inside the Sehhaty app', 'Hand-off to the 937 health line for non-urgent advice', 'Location sharing with Red Crescent 997 in emergencies'],
+        points: ['Entry point inside the Sehhaty app', 'Hand-off to the 937 health line for non-urgent advice', 'Sharing the case summary and location with Red Crescent 997 in emergencies'],
       },
       {
         tag: 'Scale',
         title: 'AI-first, more cities',
         points: [
           'Full voice conversation with the AI assistant, after clinical validation of spoken answers',
-          "Hands-free emergency alerts: the phone's AI assistant sends your location to family automatically",
+          'Emergency hand-off before arrival: the assessment summary and location go to Red Crescent 997 and the receiving emergency department, so the team can prepare',
           'Live traffic-based travel times and capacity feeds from hospital systems',
           'Expansion beyond Jeddah',
         ],
@@ -90,14 +90,14 @@ const COPY: Copy<{
       {
         tag: 'بعدها',
         title: 'التكامل',
-        points: ['نقطة دخول داخل تطبيق صحتي', 'تحويل إلى خط 937 للاستشارات غير الطارئة', 'مشاركة الموقع مع الهلال الأحمر 997 في الطوارئ'],
+        points: ['نقطة دخول داخل تطبيق صحتي', 'تحويل إلى خط 937 للاستشارات غير الطارئة', 'مشاركة ملخص الحالة والموقع مع الهلال الأحمر 997 في الطوارئ'],
       },
       {
         tag: 'التوسع',
         title: 'ذكاء اصطناعي أشمل ومدن أكثر',
         points: [
           'محادثة صوتية كاملة مع المساعد الذكي، بعد التحقق السريري من دقة فهم الإجابات الصوتية',
-          'تنبيه طوارئ بدون لمس: مساعد الجوال الذكي يرسل موقعك لأهلك تلقائيا',
+          'تسليم الحالة قبل الوصول: يُرسل ملخص التقييم مع الموقع للهلال الأحمر 997 ولقسم الطوارئ المستقبِل ليجهز الفريق الطبي',
           'أوقات وصول مبنية على حركة المرور المباشرة وربط السعة مع أنظمة المستشفيات',
           'التوسع خارج جدة',
         ],
