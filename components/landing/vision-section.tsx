@@ -33,7 +33,12 @@ const COPY: Copy<{
       {
         tag: 'Next',
         title: 'Clinical pilot',
-        points: ['Safety rules reviewed with emergency physicians', '1-2 partner facilities sharing real waiting times', 'Usability sessions with patients and staff'],
+        points: [
+          'Safety rules reviewed with emergency physicians',
+          '1-2 partner facilities sharing real waiting times',
+          'Usability sessions with patients and staff',
+          'AI hosted inside Saudi Arabia (local cloud or on-premise) to protect patient data under the PDPL',
+        ],
       },
       {
         tag: 'Then',
@@ -42,8 +47,13 @@ const COPY: Copy<{
       },
       {
         tag: 'Scale',
-        title: 'More cities',
-        points: ['Live traffic-based travel times', 'Capacity feeds from hospital systems', 'Expansion beyond Jeddah'],
+        title: 'AI-first, more cities',
+        points: [
+          'Full voice conversation with the AI assistant, after clinical validation of spoken answers',
+          "Hands-free emergency alerts: the phone's AI assistant sends your location to family automatically",
+          'Live traffic-based travel times and capacity feeds from hospital systems',
+          'Expansion beyond Jeddah',
+        ],
       },
     ],
     whoTitle: 'Who benefits',
@@ -70,7 +80,12 @@ const COPY: Copy<{
       {
         tag: 'التالي',
         title: 'تجربة سريرية',
-        points: ['مراجعة قواعد السلامة مع أطباء طوارئ', 'منشأة أو منشأتان شريكتان تشاركان أوقات انتظار حقيقية', 'جلسات تجربة مع مرضى وموظفين'],
+        points: [
+          'مراجعة قواعد السلامة مع أطباء طوارئ',
+          'منشأة أو منشأتان شريكتان تشاركان أوقات انتظار حقيقية',
+          'جلسات تجربة مع مرضى وموظفين',
+          'ذكاء اصطناعي مستضاف داخل المملكة (سحابة محلية أو داخل المستشفى) لحماية بيانات المرضى وفق نظام حماية البيانات الشخصية',
+        ],
       },
       {
         tag: 'بعدها',
@@ -79,8 +94,13 @@ const COPY: Copy<{
       },
       {
         tag: 'التوسع',
-        title: 'مدن أكثر',
-        points: ['أوقات وصول مبنية على حركة المرور المباشرة', 'ربط السعة مع أنظمة المستشفيات', 'التوسع خارج جدة'],
+        title: 'ذكاء اصطناعي أشمل ومدن أكثر',
+        points: [
+          'محادثة صوتية كاملة مع المساعد الذكي، بعد التحقق السريري من دقة فهم الإجابات الصوتية',
+          'تنبيه طوارئ بدون لمس: مساعد الجوال الذكي يرسل موقعك لأهلك تلقائيا',
+          'أوقات وصول مبنية على حركة المرور المباشرة وربط السعة مع أنظمة المستشفيات',
+          'التوسع خارج جدة',
+        ],
       },
     ],
     whoTitle: 'من يستفيد',
@@ -154,11 +174,11 @@ export function VisionSection() {
               <Smartphone className="h-5 w-5 text-teal-300" /> {t.qrTitle}
             </p>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/careflow-qr.svg" alt={t.qrAlt} width={176} height={176} className="mt-4 h-44 w-44 rounded-xl bg-white p-2" />
+            <img src="/careflow-qr.svg" alt={t.qrAlt} width={192} height={192} className="mt-4 h-48 w-48 rounded-xl bg-white" />
             <p className="mt-4 text-sm text-slate-300">{t.qrText}</p>
-            <p dir="ltr" className="mt-1 font-mono text-xs text-teal-300">
+            <a href={`https://${SITE_URL}`} dir="ltr" className="mt-1 font-mono text-xs text-teal-300 underline underline-offset-2">
               {SITE_URL}
-            </p>
+            </a>
           </div>
         </div>
       </div>
