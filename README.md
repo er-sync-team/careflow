@@ -170,7 +170,7 @@ facility, protected columns, anonymous), case read isolation, forged case status
 - **Impact simulation** on `/demo`: 100 synthetic patients through the real algorithm vs going to the nearest suitable facility
 - **How we tested** page (`/testing`): methods, results, issues found and fixed, and what is not tested yet
 - **Share my location** on the emergency screen: Google Maps link via WhatsApp or SMS
-- **Voice input** for symptoms in Arabic or English (browsers with speech recognition, e.g. Chrome and Edge)
+- **Voice input** for symptoms in Arabic or English, in every modern browser: Chrome/Edge use built-in speech recognition; Safari and others record a short clip that Gemini transcribes on the server (`/api/transcribe`). Add `?voice=record` to force the recording mode
 - **Vision and roadmap** section with a QR code on the landing page
 - Deterministic four-level urgency and three pathways
 - Eligibility-first weighted matching with explanations and excluded-facility reasons

@@ -34,7 +34,7 @@ const COPY: Copy<{
     intro:
       'What we tested, how we tested it, what the results show, and what has not been tested yet. All testing used synthetic patients, facilities and accounts.',
     summary: [
-      { value: '34', label: 'automated logic tests, all passing' },
+      { value: '37', label: 'automated logic tests, all passing' },
       { value: '8', label: 'database permission tests' },
       { value: '2', label: 'languages tested end to end' },
       { value: '0', label: 'known open defects in the demo flows' },
@@ -129,7 +129,7 @@ const COPY: Copy<{
     title: 'كيف اختبرنا CareFlow',
     intro: 'ماذا اختبرنا، وكيف اختبرنا، وماذا تثبت النتائج، وما الذي لم يُختبر بعد. جميع الاختبارات استخدمت مرضى ومنشآت وحسابات تجريبية.',
     summary: [
-      { value: '34', label: 'اختبارا آليا للمنطق، جميعها ناجحة' },
+      { value: '37', label: 'اختبارا آليا للمنطق، جميعها ناجحة' },
       { value: '8', label: 'اختبارات صلاحيات على قاعدة البيانات' },
       { value: '2', label: 'لغتان تم اختبارهما بالكامل' },
       { value: '0', label: 'أخطاء معروفة مفتوحة في مسارات العرض' },
